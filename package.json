@@ -1,0 +1,25 @@
+{
+  "name": "music-player-backend",
+  "description": "A simple music player",
+  "version": "1.0.0",
+  "author": "Jaydeep Solanki <jaydp17@gmail.com> (https://jaydp.com)",
+  "bugs": {
+    "url": "https://github.com/jaydp17/music-player-backend/issues"
+  },
+  "dependencies": {
+    "restify": "6.3.4"
+  },
+  "devDependencies": {
+    "prettier": "1.10.2"
+  },
+  "homepage": "https://github.com/jaydp17/music-player-backend#readme",
+  "license": "MIT",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaydp17/music-player-backend.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
