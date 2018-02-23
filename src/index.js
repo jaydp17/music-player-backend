@@ -1,4 +1,5 @@
 const restify = require('restify');
+const s3Utils = require('./s3-utils');
 
 const server = restify.createServer({
   name: 'music-player-backend',
@@ -12,6 +13,16 @@ server.use(restify.plugins.bodyParser());
 server.get('/echo/:name', (req, res, next) => {
   res.send(req.params);
   return next();
+});
+
+server.get('/song/:id', (req, res, next) => {
+  const { id: songId } = req.params;
+  const songStream = s3Utils.getSongStream(songId);
+  if (songStream) {
+    songStream.pipe(res);
+  } else {
+    next(new Error('steam not found'));
+  }
 });
 
 server.listen(8080, () => {

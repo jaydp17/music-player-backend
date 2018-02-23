@@ -7,6 +7,7 @@
     "url": "https://github.com/jaydp17/music-player-backend/issues"
   },
   "dependencies": {
+    "aws-sdk": "2.201.0",
     "restify": "6.3.4"
   },
   "devDependencies": {
