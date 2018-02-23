@@ -10,6 +10,10 @@
     "restify": "6.3.4"
   },
   "devDependencies": {
+    "eslint": "4.18.1",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.9.0",
     "prettier": "1.10.2"
   },
   "homepage": "https://github.com/jaydp17/music-player-backend#readme",
@@ -20,6 +24,7 @@
     "url": "git+https://github.com/jaydp17/music-player-backend.git"
   },
   "scripts": {
+    "lint": "eslint src/**/*.js --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
