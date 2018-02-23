@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "aws-sdk": "2.201.0",
-    "restify": "6.3.4"
+    "restify": "6.3.4",
+    "restify-errors": "6.0.0"
   },
   "devDependencies": {
     "eslint": "4.18.1",

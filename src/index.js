@@ -1,4 +1,5 @@
 const restify = require('restify');
+const restErrors = require('restify-errors');
 const s3Utils = require('./s3-utils');
 
 const server = restify.createServer({
@@ -15,13 +16,13 @@ server.get('/echo/:name', (req, res, next) => {
   return next();
 });
 
-server.get('/song/:id', (req, res, next) => {
+server.get('/song/:id', async (req, res, next) => {
   const { id: songId } = req.params;
-  const songStream = s3Utils.getSongStream(songId);
+  const songStream = await s3Utils.getSongStream(songId);
   if (songStream) {
     songStream.pipe(res);
   } else {
-    next(new Error('steam not found'));
+    next(new restErrors.NotFoundError('stream not found'));
   }
 });
 
