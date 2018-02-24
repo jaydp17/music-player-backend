@@ -5,11 +5,9 @@ const { metaDataBaseUrl } = require('./config');
 const s3Utils = require('./s3-utils');
 
 module.exports = server => {
-  server.get('/echo/:name', (req, res, next) => {
-    res.send(req.params);
-    return next();
-  });
-
+  /**
+   * Streams a song from S3
+   */
   server.get('/song/:id', async (req, res, next) => {
     const { id: songId } = req.params;
     const songStream = await s3Utils.getSongStream(songId);
@@ -30,6 +28,7 @@ module.exports = server => {
 
   server.get('/songs-list', async (req, res, next) => {
     const songIds = await s3Utils.getSongIds();
+    // concurrently fetches data from the metadata server for all the songs in picture
     const songsList = await Promise.map(songIds, getMetaData);
     res.send(songsList);
     next();

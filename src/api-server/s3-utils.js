@@ -16,6 +16,7 @@ async function fileExists(s3Key) {
     return !!result;
   } catch (error) {
     if (error.code !== 'NotFound') {
+      // eslint-disable-next-line no-console
       console.error(`Error: fileExists - ${s3Key} `, error);
     }
     return false;

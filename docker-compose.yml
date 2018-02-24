@@ -13,6 +13,7 @@ services:
       context: .
       dockerfile: Dockerfile.api-server
     depends_on:
+      # makes sure redis & metadata-server start before starting api-server
       - redis
       - metadata-server
     ports:
