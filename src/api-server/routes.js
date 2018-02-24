@@ -5,6 +5,11 @@ const { metaDataBaseUrl } = require('./config');
 const s3Utils = require('./s3-utils');
 
 module.exports = server => {
+  server.get('/', (req, res, next) => {
+    res.send('Aula rocks 🤘');
+    next();
+  });
+
   /**
    * Streams a song from S3
    */
