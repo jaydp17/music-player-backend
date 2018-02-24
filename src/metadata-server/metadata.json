@@ -1,15 +1,18 @@
 {
   "anewbeginning": {
+    "id": "anewbeginning",
     "title": "A new Beginning",
     "singer": "Ed Sheeran",
     "art": "https://www.bensound.com/bensound-img/anewbeginning.jpg"
   },
   "summer": {
+    "id": "summer",
     "title": "Summer",
     "singer": "Taylor Swift",
     "art": "https://www.bensound.com/bensound-img/summer.jpg"
   },
   "jazzyfrenchy": {
+    "id": "jazzyfrenchy",
     "title": "Jazzy Frenchy",
     "singer": "Bruno Mars",
     "art": "https://www.bensound.com/bensound-img/jazzyfrenchy.jpg"

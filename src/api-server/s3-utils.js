@@ -36,9 +36,9 @@ async function getSongStream(s3Key) {
 /**
  * Gets the list of songs from S3
  */
-async function getSongList() {
+async function getSongIds() {
   const result = await s3.listObjectsV2({ Bucket: s3Bucket }).promise();
   return result.Contents.map(obj => obj.Key).map(utils.getIdFromFileName);
 }
 
-module.exports = { getSongStream, getSongList };
+module.exports = { getSongStream, getSongIds };

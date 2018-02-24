@@ -1,4 +1,7 @@
 const restErrors = require('restify-errors');
+const Promise = require('bluebird');
+const axios = require('axios');
+const { metaDataBaseUrl } = require('./config');
 const s3Utils = require('./s3-utils');
 
 module.exports = server => {
@@ -17,8 +20,17 @@ module.exports = server => {
     }
   });
 
+  /**
+   * Gets the metaData from the MetaData server
+   */
+  const getMetaData = async songId => {
+    const result = await axios.get(`${metaDataBaseUrl}/metaData/${songId}`);
+    return result.data;
+  };
+
   server.get('/songs-list', async (req, res, next) => {
-    const songsList = await s3Utils.getSongList();
+    const songIds = await s3Utils.getSongIds();
+    const songsList = await Promise.map(songIds, getMetaData);
     res.send(songsList);
     next();
   });
