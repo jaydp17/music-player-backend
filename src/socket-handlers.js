@@ -23,7 +23,7 @@ module.exports = io => {
       console.error('Error', err);
       return;
     }
-    if (songId && listenerCount) {
+    if (songId) {
       io.emit(LISTENER_CHANGE_CHANNEL, { songId, listenerCount });
     }
   });
