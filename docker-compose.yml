@@ -1,0 +1,24 @@
+version: '2'
+services:
+  redis:
+    image: redis:3.2.11
+
+  metadata-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.metadata-server
+
+  api-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.api-server
+    depends_on:
+      - redis
+      - metadata-server
+    ports:
+      # ports exposed in case want to test locally
+      - 8080:8080
+    environment:
+      REDIS_HOST: redis
+      METADATA_HOST: 'metadata-server:5000'
+    env_file: .env

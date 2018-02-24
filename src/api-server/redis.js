@@ -1,11 +1,12 @@
 const redis = require('redis');
 const Promise = require('bluebird');
 const { LISTENER_CHANGE_CHANNEL } = require('./channels-string');
+const { redisHost } = require('./config');
 
 Promise.promisifyAll(redis.RedisClient.prototype);
 
-const client = redis.createClient();
-const sub = redis.createClient();
+const client = redis.createClient({ host: redisHost });
+const sub = redis.createClient({ host: redisHost });
 
 sub.subscribe(LISTENER_CHANGE_CHANNEL);
 

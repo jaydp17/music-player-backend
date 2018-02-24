@@ -1,0 +1,11 @@
+FROM node:8.9-alpine
+
+WORKDIR /src
+
+COPY package.json yarn.lock /src/
+
+RUN yarn --prod
+
+COPY src/api-server /src/
+
+CMD node /src/index.js
