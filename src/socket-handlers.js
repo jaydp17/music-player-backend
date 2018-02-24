@@ -1,9 +1,9 @@
 const redis = require('./redis');
+const { LISTENER_CHANGE_CHANNEL, ALL_LISTEN_COUNT_CHANNEL } = require('./channels-string');
 
 module.exports = io => {
-  io.on('connection', client => {
+  io.on('connection', async client => {
     console.log('a user connected');
-
     client.on('start-listening', songId => {
       console.log(`${client.id} started listening to ${songId}`);
       redis.startedListening(client.id, songId);
@@ -16,6 +16,8 @@ module.exports = io => {
       console.log(`${client.id} disconnected`);
       redis.stoppedListening(client.id, null);
     });
+    const result = await redis.getAllListenCount();
+    client.emit(ALL_LISTEN_COUNT_CHANNEL, result);
   });
 
   redis.onListenersChange((err, { songId, listenerCount }) => {
@@ -23,6 +25,6 @@ module.exports = io => {
       console.error('Error', err);
       return;
     }
-    io.emit('listeners-change', { songId, listenerCount });
+    io.emit(LISTENER_CHANGE_CHANNEL, { songId, listenerCount });
   });
 };
