@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/jaydp17/music-player-backend#readme",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "src/api-server/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaydp17/music-player-backend.git"
