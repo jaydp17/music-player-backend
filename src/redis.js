@@ -21,6 +21,8 @@ function removeClientFromSongsSet({ songId, clientId }) {
 }
 
 async function startedListening(clientId, songId) {
+  if (!clientId) throw new Error("clientId can't be empty");
+  if (!songId) throw new Error("songId can't be empty");
   const usersKey = getRedisKeyForClient(clientId);
   const songsKey = getRedisKeyForSong(songId);
   const [lastSongId] = await Promise.all([
@@ -37,16 +39,20 @@ async function startedListening(clientId, songId) {
 
   // set the song the client is listening to right now
   client.set(usersKey, songId);
-  // publish update for songId
-  client.publish(updatesChannelName, songId);
+  if (lastSongId !== songId) {
+    // publish update for songId
+    client.publish(updatesChannelName, songId);
+  }
 }
 
 async function stoppedListening(clientId, songId) {
+  if (!clientId) throw new Error("clientId can't be empty");
   const usersKey = getRedisKeyForClient(clientId);
   const lastSongId = await client.getAsync(usersKey);
   if (lastSongId) {
     // if lastSongId was found, remove client from the last song's set
     removeClientFromSongsSet({ songId: lastSongId, clientId });
+    client.publish(updatesChannelName, lastSongId);
   }
   if (songId && lastSongId !== songId) {
     // shouldn't happen, but in case there's some descripency in the data
@@ -55,9 +61,8 @@ async function stoppedListening(clientId, songId) {
   // clear the song the client is listening to right now
   client.del(usersKey);
 
-  // publish update for songId
-  client.publish(updatesChannelName, lastSongId);
   if (songId && lastSongId !== songId) {
+    // publish update for songId
     client.publish(updatesChannelName, songId);
   }
 }
