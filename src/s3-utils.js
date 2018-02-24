@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 const { s3Bucket } = require('./config');
+const utils = require('./utils');
 
 // AWS credentials are passed using env vars
 const s3 = new AWS.S3();
@@ -32,4 +33,12 @@ async function getSongStream(s3Key) {
   return s3.getObject({ Bucket: s3Bucket, Key: s3Key }).createReadStream();
 }
 
-module.exports = { getSongStream };
+/**
+ * Gets the list of songs from S3
+ */
+async function getSongList() {
+  const result = await s3.listObjectsV2({ Bucket: s3Bucket }).promise();
+  return result.Contents.map(obj => obj.Key).map(utils.getIdFromFileName);
+}
+
+module.exports = { getSongStream, getSongList };

@@ -26,6 +26,12 @@ server.get('/song/:id', async (req, res, next) => {
   }
 });
 
+server.get('/songs-list', async (req, res, next) => {
+  const songsList = await s3Utils.getSongList();
+  res.send(songsList);
+  next();
+});
+
 server.listen(8080, () => {
   console.log('%s listening at %s', server.name, server.url);
 });
