@@ -16,5 +16,77 @@
     "title": "Jazzy Frenchy",
     "singer": "Bruno Mars",
     "art": "https://www.bensound.com/bensound-img/jazzyfrenchy.jpg"
+  },
+  "happyrock": {
+    "id": "happyrock",
+    "title": "Happy Rock 🤘",
+    "singer": "David Guetta",
+    "art": "https://www.bensound.com/bensound-img/happyrock.jpg"
+  },
+  "clearday": {
+    "id": "clearday",
+    "title": "Clear Day",
+    "singer": "Ellie Goulding",
+    "art": "https://www.bensound.com/bensound-img/clearday.jpg"
+  },
+  "ukulele": {
+    "id": "ukulele",
+    "title": "Ukulele",
+    "singer": "Justin Timberlake",
+    "art": "https://www.bensound.com/bensound-img/ukulele.jpg"
+  },
+  "buddy": {
+    "id": "buddy",
+    "title": "Buddy",
+    "singer": "Jessie J",
+    "art": "https://www.bensound.com/bensound-img/buddy.jpg"
+  },
+  "littleidea": {
+    "id": "littleidea",
+    "title": "Little Idea",
+    "singer": "Enrique Iglesias",
+    "art": "https://www.bensound.com/bensound-img/littleidea.jpg"
+  },
+  "energy": {
+    "id": "energy",
+    "title": "Energy ⚡️",
+    "singer": "Pitbull",
+    "art": "https://www.bensound.com/bensound-img/energy.jpg"
+  },
+  "acousticbreeze": {
+    "id": "acousticbreeze",
+    "title": "Acustic Breeze",
+    "singer": "Rihanna",
+    "art": "https://www.bensound.com/bensound-img/acousticbreeze.jpg"
+  },
+  "goinghigher": {
+    "id": "goinghigher",
+    "title": "Going higher",
+    "singer": "Lady Gaga",
+    "art": "https://www.bensound.com/bensound-img/goinghigher.jpg"
+  },
+  "funnysong": {
+    "id": "funnysong",
+    "title": "The Funny Song",
+    "singer": "Bruno Mars",
+    "art": "https://www.bensound.com/bensound-img/funnysong.jpg"
+  },
+  "slowmotion": {
+    "id": "slowmotion",
+    "title": "Slow Motion",
+    "singer": "Johnny Cash",
+    "art": "https://www.bensound.com/bensound-img/slowmotion.jpg"
+  },
+  "epic": {
+    "id": "epic",
+    "title": "Epic",
+    "singer": "Katy Perry",
+    "art": "https://www.bensound.com/bensound-img/epic.jpg"
+  },
+  "dubstep": {
+    "id": "dubstep",
+    "title": "Dubstep",
+    "singer": "Nicki Minaj",
+    "art": "https://www.bensound.com/bensound-img/dubstep.jpg"
   }
 }
